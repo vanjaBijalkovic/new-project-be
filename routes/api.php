@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'potato'], function() {
+    Route::get('technologies', 'TechnologyController@index');
+    Route::get('categories', 'CategoryController@index');
+    Route::get('skills', 'SkillsController@index');
+    Route::resource('user-technologies', 'UserTechnologyController');
 });
