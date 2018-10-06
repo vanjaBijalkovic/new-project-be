@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Skill;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class SkillsController extends Controller
 {
@@ -14,6 +15,7 @@ class SkillsController extends Controller
      */
     public function index()
     {
-        return Skill::all();
+        return  QueryBuilder::for(Skill::class)
+            ->get();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Technology;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TechnologyController extends Controller
 {
@@ -14,6 +15,7 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        return Technology::all();
+        return QueryBuilder::for(Technology::class)
+            ->get();
     }
  }

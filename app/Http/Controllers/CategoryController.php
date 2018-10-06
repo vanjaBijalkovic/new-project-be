@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CategoryController extends Controller
 {
@@ -14,6 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        return  QueryBuilder::for(Category::class)
+            ->get();
     }
 }

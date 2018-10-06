@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\UserTechnology;
+use App\User;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class UserTechnologyController extends Controller
 {
@@ -16,9 +17,10 @@ class UserTechnologyController extends Controller
     {
         $userId = $request->get('user_id');
 
-        return UserTechnology::where('user_id', $userId)
+        return QueryBuilder::for(User::class) 
+            ->where('id', $userId)
             // geting nested object with eger loading
-            // ->with('technologies.categories.skills')
+            // ->with('userTechnologies.technologies', 'userSkills.skills', 'userCategories.categories')
             ->get();
     }
 
